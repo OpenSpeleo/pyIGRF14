@@ -1,0 +1,27 @@
+[build-system]
+requires = ["flit_core >=3.11,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.uv]
+dev-dependencies = [
+  "flit>=3.12,<4",
+  "wheel>=0.45",
+]
+package = true
+
+[project]
+name = "pyIGRF"
+version = "1.0.1"
+description = "IGRF-14 Model by Python"
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
+authors = [{ name = "zzyztyy", email = "2375672032@qq.com" }]
+maintainers = [{ name = "zzyztyy", email = "2375672032@qq.com" }]
+dependencies = [
+    "numpy"
+]
+
+[project.urls]
+Homepage = "https://pypi.org/project/pyIGRF/"
+Repository = "https://github.com/zzyztyy/pyIGRF"
