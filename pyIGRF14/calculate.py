@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import math
-from pyIGRF.loadCoeffs import get_coeffs
+from pyIGRF14.loadCoeffs import get_coeffs
 
 
 FACT = 180./math.pi

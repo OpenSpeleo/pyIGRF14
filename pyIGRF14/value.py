@@ -1,6 +1,6 @@
 import math
 
-import pyIGRF.calculate as calculate
+import pyIGRF14.calculate as calculate
 
 FACT = 180./math.pi
 

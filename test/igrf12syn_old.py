@@ -2,7 +2,7 @@ import numpy as np
 
 from goto import with_goto
 
-from pyIGRF.loadCoeffs import gh
+from pyIGRF14.loadCoeffs import gh
 
 
 @with_goto
