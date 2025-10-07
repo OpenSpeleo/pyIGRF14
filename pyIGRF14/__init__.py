@@ -7,7 +7,7 @@ It don't need any Fortran compiler.
 """
 
 __author__ = "zzyztyy"
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 from pyIGRF14 import calculate, loadCoeffs  # noqa: F401
 from pyIGRF14.value import igrf_value, igrf_variation  # noqa: F401
