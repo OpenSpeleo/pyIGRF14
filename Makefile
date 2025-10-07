@@ -20,6 +20,8 @@ clean-pyc: ## remove Python file artifacts
 # INSTALL COMMANDS
 # ============================================================================ #
 
+install: clean
+	uv sync --all-extras --dev
+
 build: clean
-	pip install flit
 	flit build

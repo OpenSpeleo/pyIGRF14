@@ -7,6 +7,7 @@ from dataclasses import dataclass
 
 TEST_FLOAT_PRECISION = 7
 
+
 @dataclass(frozen=True)
 class GeoLocation:
     latitude: float

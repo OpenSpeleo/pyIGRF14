@@ -15,7 +15,7 @@ def load_coeffs(filepath: Path):
     with filepath.open(mode="r") as f:
         text = f.readlines()
         for a in text:
-            if a[:2] == 'g ' or a[:2] == 'h ':
+            if a[:2] == "g " or a[:2] == "h ":
                 b = a.split()[3:]
                 b = [float(x) for x in b]
                 gh2arr.append(b)
@@ -41,19 +41,23 @@ def get_coeffs(date):
     :return: list: g, list: h
     """
     if date < 1900.0 or date > 2035.0:
-        print('This subroutine will not work with a date of ' + str(date))
-        print('Date must be in the range 1900.0 <= date <= 2035.0')
-        print('On return [], []')
+        print("This subroutine will not work with a date of " + str(date))
+        print("Date must be in the range 1900.0 <= date <= 2035.0")
+        print("On return [], []")
         return [], []
     elif date >= 2025.0:
         if date > 2030.0:
             # not adapt for the model but can calculate
-            print('This version of the IGRF is intended for use up to 2025.0.')
-            print('values for ' + str(date) + ' will be computed but may be of reduced accuracy')
+            print("This version of the IGRF is intended for use up to 2025.0.")
+            print(
+                "values for "
+                + str(date)
+                + " will be computed but may be of reduced accuracy"
+            )
         t = date - 2025.0
         tc = 1.0
         #     pointer for last coefficient in pen-ultimate set of MF coefficients...
-        ll = 3060+195+195
+        ll = 3060 + 195 + 195
         nmx = 13
         nc = nmx * (nmx + 2)
     else:
@@ -74,20 +78,20 @@ def get_coeffs(date):
         tc = 1.0 - t
     # print(tc, t)
     g, h = [], []
-    temp = ll-1
-    for n in range(nmx+1):
+    temp = ll - 1
+    for n in range(nmx + 1):
         g.append([])
         h.append([])
         if n == 0:
             g[0].append(None)
-        for m in range(n+1):
+        for m in range(n + 1):
             if m != 0:
-                g[n].append(tc*IGRF_COEFFS[temp] + t*IGRF_COEFFS[temp+nc])
-                h[n].append(tc*IGRF_COEFFS[temp+1] + t*IGRF_COEFFS[temp+nc+1])
+                g[n].append(tc * IGRF_COEFFS[temp] + t * IGRF_COEFFS[temp + nc])
+                h[n].append(tc * IGRF_COEFFS[temp + 1] + t * IGRF_COEFFS[temp + nc + 1])
                 temp += 2
                 # print(n, m, g[n][m], h[n][m])
             else:
-                g[n].append(tc*IGRF_COEFFS[temp] + t*IGRF_COEFFS[temp+nc])
+                g[n].append(tc * IGRF_COEFFS[temp] + t * IGRF_COEFFS[temp + nc])
                 h[n].append(None)
                 temp += 1
                 # print(n, m, g[n][m], h[n][m])

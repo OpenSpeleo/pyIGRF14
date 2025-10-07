@@ -8,6 +8,7 @@ package = true
 [dependency-groups]
 dev = [
     "flit>=3.12,<4",
+    "pre-commit>=4.1,<4.4",
     "twine>=6.0,<7.0",
     "wheel>=0.45",
 ]
