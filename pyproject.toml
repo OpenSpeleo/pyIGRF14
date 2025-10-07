@@ -19,16 +19,13 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
 authors = [{ name = "zzyztyy", email = "2375672032@qq.com" }]
-maintainers = [{ name = "zzyztyy", email = "2375672032@qq.com" }]
+maintainers = [{ name = "Jonathan Dekhtiar", email = "jonathan@dekhtiar.com" }]
 dependencies = ["numpy"]
 dynamic = ["description", "version"]
 
 [project.optional-dependencies]
-test = [
-    "pytest",
-    "goto-statement>=1.2,<2.0"
-]
+test = ["pytest", "goto-statement>=1.2,<2.0"]
 
 [project.urls]
-Homepage = "https://pypi.org/project/pyIGRF/"
-Repository = "https://github.com/zzyztyy/pyIGRF"
+Homepage = "https://pypi.org/project/pyIGRF14/"
+Repository = "https://github.com/OpenSpeleo/pyIGRF14"

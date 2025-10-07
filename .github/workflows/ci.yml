@@ -74,10 +74,10 @@ jobs:
       attestations: write
     steps:
       - name: Checkout Code Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v7
         with:
           python-version: 3.14
 
@@ -85,7 +85,15 @@ jobs:
         run: uv sync --all-extras --frozen --dev
 
       - name: Build the wheel artifact
-        run: flit build --format wheel
+        run: |
+          source .venv/bin/activate
+          flit build --format wheel
+
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          path: dist
+          if-no-files-found: error
 
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v2
