@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import math
 
 import pyIGRF14.calculate as calculate

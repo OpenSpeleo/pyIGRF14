@@ -3,29 +3,29 @@ requires = ["flit_core >=3.11,<4"]
 build-backend = "flit_core.buildapi"
 
 [tool.uv]
-dev-dependencies = [
-  "flit>=3.12,<4",
-  "twine>=6.0,<7.0",
-  "wheel>=0.45",
-]
 package = true
+
+[dependency-groups]
+dev = [
+    "flit>=3.12,<4",
+    "twine>=6.0,<7.0",
+    "wheel>=0.45",
+]
 
 [project]
 name = "pyIGRF14"
-version = "1.0.2"
-description = "IGRF-14 Model by Python"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 license = { file = "LICENSE" }
 authors = [{ name = "zzyztyy", email = "2375672032@qq.com" }]
 maintainers = [{ name = "zzyztyy", email = "2375672032@qq.com" }]
-dependencies = [
-    "numpy"
-]
+dependencies = ["numpy"]
+dynamic = ["description", "version"]
 
 [project.optional-dependencies]
 test = [
-  "goto-statement>=1.2,<2.0"
+    "pytest",
+    "goto-statement>=1.2,<2.0"
 ]
 
 [project.urls]

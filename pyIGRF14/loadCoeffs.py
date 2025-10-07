@@ -1,10 +1,10 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-import os
+from __future__ import annotations
 
 
-def load_coeffs(filename):
+from pathlib import Path
+
+
+def load_coeffs(filepath: Path):
     """
     load igrf12 coeffs from file
     :param filename: file which save coeffs (str)
@@ -12,7 +12,7 @@ def load_coeffs(filename):
     """
     gh = []
     gh2arr = []
-    with open(filename) as f:
+    with filepath.open(mode="r") as f:
         text = f.readlines()
         for a in text:
             if a[:2] == 'g ' or a[:2] == 'h ':
@@ -32,12 +32,11 @@ def load_coeffs(filename):
     return gh
 
 
-gh = load_coeffs(os.path.dirname(os.path.abspath(__file__)) + '/src/igrf14coeffs.txt')
+IGRF_COEFFS = load_coeffs(Path(__file__).parent / "src/igrf14coeffs.txt")
 
 
 def get_coeffs(date):
     """
-    :param gh: list from load_coeffs
     :param date: float
     :return: list: g, list: h
     """
@@ -83,12 +82,12 @@ def get_coeffs(date):
             g[0].append(None)
         for m in range(n+1):
             if m != 0:
-                g[n].append(tc*gh[temp] + t*gh[temp+nc])
-                h[n].append(tc*gh[temp+1] + t*gh[temp+nc+1])
+                g[n].append(tc*IGRF_COEFFS[temp] + t*IGRF_COEFFS[temp+nc])
+                h[n].append(tc*IGRF_COEFFS[temp+1] + t*IGRF_COEFFS[temp+nc+1])
                 temp += 2
                 # print(n, m, g[n][m], h[n][m])
             else:
-                g[n].append(tc*gh[temp] + t*gh[temp+nc])
+                g[n].append(tc*IGRF_COEFFS[temp] + t*IGRF_COEFFS[temp+nc])
                 h[n].append(None)
                 temp += 1
                 # print(n, m, g[n][m], h[n][m])

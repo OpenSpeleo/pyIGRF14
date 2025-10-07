@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
+from __future__ import annotations
 
 import math
 from pyIGRF14.loadCoeffs import get_coeffs
