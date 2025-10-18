@@ -1,4 +1,4 @@
-FROM python:3.14.0rc3-bookworm
+FROM python:3.14.0-bookworm
 
 RUN apt update && apt install -y --no-install-recommends \
     git \
